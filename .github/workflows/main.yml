@@ -130,6 +130,18 @@ jobs:
         run: |
           chmod +x submission/08.sh
           ACTUAL_OUTPUT=$(submission/08.sh)
+          EXPECTED_OUTPUT=0200000002160ee5dd146316bb3400ede0d4ad512ab9c1ede486ab5a119a2ee9d4379fc1230000000000fdffffff160ee5dd146316bb3400ede0d4ad512ab9c1ede486ab5a119a2ee9d4379fc1230100000000fdffffff01640269010000000017a91421ed90762e16eaaea188aae19142e5b25bf75d238700000000
+          if [[ "$ACTUAL_OUTPUT" == "$EXPECTED_OUTPUT" ]]; then
+            echo "✅ Success: Raw Transaction Hex Check passed!"
+          else
+            echo "❌ Error: Raw Transaction Hex Check failed!"
+            exit 1
+          fi
+      
+      - name: 09.sh - Verify Raw Transaction Hex
+        run: |
+          chmod +x submission/09.sh
+          ACTUAL_OUTPUT=$(submission/09.sh)
           EXPECTED_OUTPUT=0200000002160ee5dd146316bb3400ede0d4ad512ab9c1ede486ab5a119a2ee9d4379fc123000000000001000000160ee5dd146316bb3400ede0d4ad512ab9c1ede486ab5a119a2ee9d4379fc12301000000000100000001002d31010000000017a91421ed90762e16eaaea188aae19142e5b25bf75d238700000000
           if [[ "$ACTUAL_OUTPUT" == "$EXPECTED_OUTPUT" ]]; then
             echo "✅ Success: Raw Transaction Hex Check passed!"
